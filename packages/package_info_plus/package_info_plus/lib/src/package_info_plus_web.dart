@@ -32,8 +32,7 @@ class PackageInfoPlusWebPlugin extends PackageInfoPlatform {
 
   @override
   Future<PackageInfoData> getAll() async {
-    final cacheBuster = DateTime.now().millisecondsSinceEpoch;
-    final url = versionJsonUrl(window.document.baseUri!, cacheBuster);
+    final url = versionJsonUrl(window.document.baseUri!);
     final response = _client == null ? await get(url) : await _client!.get(url);
     final versionMap = _getVersionMap(response);
 
